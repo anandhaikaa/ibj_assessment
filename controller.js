@@ -11,7 +11,7 @@ exports.index = function(req,res){
 exports.tampilsemuaadmin = function(req,res){
     connection.query('SELECT * FROM admin', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
         }
@@ -22,7 +22,7 @@ exports.tampilsemuaadmin = function(req,res){
 exports.tampilsemuacourses = function(req,res){
     connection.query('SELECT * FROM courses', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
         }
@@ -33,7 +33,7 @@ exports.tampilsemuacourses = function(req,res){
 exports.tampilsemuacourse_categories = function(req,res){
     connection.query('SELECT * FROM course_categories', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
         }
@@ -44,7 +44,7 @@ exports.tampilsemuacourse_categories = function(req,res){
 exports.tampilsemuausers = function(req,res){
     connection.query('SELECT * FROM users', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
         }
@@ -55,9 +55,74 @@ exports.tampilsemuausers = function(req,res){
 exports.tampilsemuauser_courses = function(req,res){
     connection.query('SELECT * FROM user_courses', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
         }
     });
+};
+
+//menampilkan semua data admin berdasarkan id
+exports.tampiladminberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM admin WHERE id = ?', [id],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+//menampilkan semua data courses berdasarkan id
+exports.tampilcoursesberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM courses WHERE id = ?', [id],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+//menampilkan semua data course_categories berdasarkan id
+exports.tampilcourse_categoriesberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM course_categories WHERE id = ?', [id],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+//menampilkan semua data users berdasarkan id
+exports.tampilusersberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM users WHERE id = ?', [id],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+//menampilkan semua data user_courses berdasarkan id
+exports.tampiluser_coursesberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM user_courses WHERE id = ?', [id],
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok(rows, res)
+            }
+        });
 };
